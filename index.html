@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Estrategia - Grupo Médico CAVELI Mazunte</title>
+    <style>
+        :root {
+            --bg-outer: #EAE8E1;
+            --bg-canvas: #FAF9F5;
+            --dark-block: #1A1A1A;
+            --card-white: #FFFFFF;
+            --text-dark: #1A1A1A;
+            --text-muted: #666666;
+            --radius-xl: 32px;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-outer);
+            color: var(--text-dark);
+            line-height: 1.5;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            background: var(--bg-canvas);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        /* Top Bar Navigation */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: var(--bg-canvas);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-pill {
+            background: var(--dark-block);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Hero Header */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            padding: 40px 40px 60px 40px;
+            gap: 30px;
+            background: var(--bg-canvas);
+        }
+
+        .hero-text h1 {
+            font-size: 44px; /* Nivel 1: Título Extra Grande */
+            font-weight: 800;
+            letter-spacing: -1.2px;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .hero-text h2 {
+            font-size: 20px; /* Nivel 3 */
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .hero-text p {
+            font-size: 15px; /* Nivel 4 */
+            color: #4A4A4A;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .hero-img-box {
+            width: 100%;
+            height: 320px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Canvas Main Area */
+        .canvas-body {
+            background: #FFFFFF;
+            padding: 40px;
+            border-top-left-radius: var(--radius-xl);
+            border-top-right-radius: var(--radius-xl);
+        }
+
+        /* Dark Card Banner */
+        .dark-banner {
+            background: var(--dark-block);
+            color: white;
+            border-radius: var(--radius-lg);
+            padding: 36px 40px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .dark-banner h3 {
+            font-size: 28px; /* Nivel 2 */
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .dark-banner p {
+            font-size: 14px;
+            color: #B0B0B0;
+            margin-bottom: 20px;
+        }
+
+        .banner-img {
+            height: 180px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .banner-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--dark-block);
+            border: none;
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 26px; /* Nivel 2 */
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+        }
+
+        /* Audience Grid Cards */
+        .audience-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .audience-card {
+            background: #F9F9F8;
+            border: 1px solid #EBEBE6;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            text-align: center;
+        }
+
+        .avatar-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 16px auto;
+            border: 3px solid white;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .audience-card h4 {
+            font-size: 18px; /* Nivel 3 */
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .audience-card p {
+            font-size: 13.5px; /* Nivel 4 */
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Specialty Cards */
+        .specialty-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .specialty-tile {
+            background: #F9F9F8;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid #EBEBE6;
+        }
+
+        .specialty-img {
+            height: 120px;
+            width: 100%;
+        }
+
+        .specialty-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .specialty-content {
+            padding: 14px;
+        }
+
+        .specialty-content h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .specialty-content p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Editorial Calendar Table */
+        .table-container {
+            border: 1px solid #EBEBE6;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .calendar-table th, .calendar-table td {
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 13.5px;
+        }
+
+        .calendar-table th {
+            background-color: #F9F9F8;
+            color: var(--text-dark);
+            font-weight: 700;
+            border-bottom: 1px solid #EBEBE6;
+        }
+
+        .calendar-table td {
+            border-bottom: 1px solid #F3F3EF;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 10.5px;
+            font-weight: 700;
+            background: #EBEBE6;
+            color: var(--text-dark);
+            margin-right: 4px;
+        }
+
+        /* Investment Pricing Grid */
+        .pricing-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .price-card {
+            border: 1px solid #EBEBE6;
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            background: #F9F9F8;
+        }
+
+        .price-card.featured {
+            background: var(--dark-block);
+            color: white;
+            border: none;
+        }
+
+        .price-card h4 {
+            font-size: 19px; /* Nivel 3 */
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .price-card .price-num {
+            font-size: 38px; /* Nivel 1 */
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin: 14px 0;
+        }
+
+        .price-card.featured .price-num {
+            color: white;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin-top: 14px;
+        }
+
+        .price-card ul li {
+            padding: 7px 0;
+            font-size: 13.5px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .price-card.featured ul li {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: #D1D5DB;
+        }
+
+        /* Dark Editorial Footer */
+        .footer-dark {
+            background: var(--dark-block);
+            color: white;
+            padding: 32px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-dark p {
+            font-size: 13.5px;
+            color: #9CA3AF;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+        <div class="logo">✦ Agencia de Marketing Reinventa - Mazunte</div>
+        <div class="nav-pill">Estrategia Instagram 2026</div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-text">
+            <h1>Grupo Médico CAVELI Mazunte</h1>
+            <h2>Dr. Marco Elizarrarás & Dra. Karen Anaya</h2>
+            <p>Propuesta de comunicación digital y plan editorial mensual para conectar de forma cercana, humana y profesional con la comunidad local, avecindada y visitante. Atención médica 24/7 en el corazón de Mazunte.</p>
+        </div>
+        <div class="hero-img-box">
+            <img src="https://images.unsplash.com/photo-1640876777002-badf6aee5bcc?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Equipo Médico Profesional">
+        </div>
+    </div>
+
+    <!-- Canvas White Body -->
+    <div class="canvas-body">
+
+        <!-- Dark Banner -->
+        <div class="dark-banner">
+            <div>
+                <h3>Enfoque Estratégico y Estilo de Comunicación</h3>
+                <p>A continuación se presenta la segmentación clave a la que se busca llegar y el tono de comunicación a establecer: cercano, profesional, empático y adaptado a la dinámica costera de Mazunte.</p>
+                <button class="btn-light">Conocer Segmentos</button>
+            </div>
+            <div class="banner-img">
+                <img src="https://plus.unsplash.com/premium_photo-1661580574627-9211124e5c3f?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Estrategia de Comunicación">
+            </div>
+        </div>
+
+        <!-- Audience Segmentation -->
+        <h2 class="section-title">Segmentación de las 3 Comunidades</h2>
+        <div class="audience-row">
+            <div class="audience-card">
+                <div class="avatar-box">
+                    <img src="https://plus.unsplash.com/premium_photo-1689747698547-271d2d553cee?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Comunidad Local">
+                </div>
+                <h4>🏡 Comunidad Local</h4>
+                <p>Nativos de Mazunte y pueblos cercanos. Enfoque en salud familiar, control de diabetes/hipertensión, seguimiento prenatal y accesibilidad.</p>
+            </div>
+
+            <div class="audience-card">
+                <div class="avatar-box">
+                    <img src="https://plus.unsplash.com/premium_photo-1705563088249-9d6bed8ee218?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Comunidad Avecindada">
+                </div>
+                <h4>🌴 Comunidad Avecindada</h4>
+                <p>Residentes permanentes nacionales e internacionales. Contenidos de medicina preventiva, especialidades, laboratorios y salud integral.</p>
+            </div>
+
+            <div class="audience-card">
+                <div class="avatar-box">
+                    <img src="https://plus.unsplash.com/premium_photo-1689531953275-a5cfcc458931?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Comunidad Visitante">
+                </div>
+                <h4>🎒 Comunidad Visitante</h4>
+                <p>Población flotante y turistas. Información de urgencias 24h, traumatología por oleaje, sueros vitaminados y cobertura de seguros.</p>
+            </div>
+        </div>
+
+        <!-- Sección de Material en Video -->
+        <div style="background: #F9F9F8; border: 1px solid #EBEBE6; border-radius: var(--radius-lg); padding: 32px; margin-bottom: 40px;">
+            <h2 class="section-title" style="margin-bottom: 12px; font-size: 24px;">🎬 Estrategia y Maximización de Material Audiovisual</h2>
+            <p style="font-size: 14.5px; color: #4A4A4A; line-height: 1.6; margin-bottom: 18px;">
+                El material en video con el que cuenta actualmente el doctor será aprovechado al máximo mediante una edición dinámica y profesional, adaptada a los formatos, ritmos y algoritmos de <strong>Instagram (Reels e Historias)</strong>. 
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+                <div style="background: white; border-radius: var(--radius-md); padding: 20px; border: 1px solid #EBEBE6;">
+                    <h5 style="font-size: 15px; font-weight: 700; margin-bottom: 6px;">✂️ Edición y Reciclaje Inteligente</h5>
+                    <p style="font-size: 13px; color: var(--text-muted);">Optimizaremos todo el archivo existente agregando subtítulos dinámicos, ganchos visuales y cortes estratégicos para captar la atención en los primeros segundos.</p>
+                </div>
+                <div style="background: white; border-radius: var(--radius-md); padding: 20px; border: 1px solid #EBEBE6;">
+                    <h5 style="font-size: 15px; font-weight: 700; margin-bottom: 6px;">🎥 Sinergia con Nuevo Contenido</h5>
+                    <p style="font-size: 13px; color: var(--text-muted);">Combinaremos el material actual con tomas y grabaciones frescas a realizarse, logrando un flujo constante de publicaciones de alta calidad sin desperdiciar ningún recurso.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Specialty Cards -->
+        <h2 class="section-title">Servicios y Especialidades Destacadas</h2>
+        <p style="font-size: 14px; color: #4A4A4A; line-height: 1.6; margin-bottom: 20px;">
+            <em>Nota: Las cuatro especialidades presentadas a continuación son sugerencias iniciales. Es fundamental coordinar la estrategia mensual para definir y priorizar cuáles servicios recibirán mayor impulso en cada periodo según las necesidades médicas y comerciales del grupo.</em>
+        </p>
+
+        <div class="specialty-row">
+            <div class="specialty-tile">
+                <div class="specialty-img">
+                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=400&auto=format&fit=crop" alt="Urgencias 24/7">
+                </div>
+                <div class="specialty-content">
+                    <h5>🚨 Urgencias 24/7</h5>
+                    <p>Atención médica inmediata de primer contacto.</p>
+                </div>
+            </div>
+
+            <div class="specialty-tile">
+                <div class="specialty-img">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=400&auto=format&fit=crop" alt="Rayos X y Ultrasonido">
+                </div>
+                <div class="specialty-content">
+                    <h5>🦴 Rayos X & Ultrasonido</h5>
+                    <p>Diagnóstico portátil directo en Mazunte.</p>
+                </div>
+            </div>
+
+            <div class="specialty-tile">
+                <div class="specialty-img">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop" alt="Atención en Hoteles">
+                </div>
+                <div class="specialty-content">
+                    <h5>🏨 Hoteles y Domicilio</h5>
+                    <p>Consulta directa en habitación o residencia.</p>
+                </div>
+            </div>
+
+            <div class="specialty-tile">
+                <div class="specialty-img">
+                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=400&auto=format&fit=crop" alt="Salud Sexual y ETS">
+                </div>
+                <div class="specialty-content">
+                    <h5>🔒 Discreción en ETS</h5>
+                    <p>Atención privada, ética y confidencial.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Calendar -->
+        <h2 class="section-title">Calendario Editorial (Lunes, Miércoles y Viernes)</h2>
+        <div class="table-container">
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Tema de la Publicación</th>
+                        <th>Servicio Destacado</th>
+                        <th>Audiencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Lun 21 Sep</strong></td>
+                        <td>¡Bienvenidos a CAVELI Mazunte! Presentación Dr. Marco Elizarrarás y Dra. Karen Anaya</td>
+                        <td>Apertura & Equipo 24/7</td>
+                        <td><span class="tag-pill">Local</span><span class="tag-pill">Avecindada</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mié 23 Sep</strong></td>
+                        <td>¿Te revolcó una ola? Traumatología, contusiones y Rayos X portátil al instante</td>
+                        <td>Traumatología / Rayos X</td>
+                        <td><span class="tag-pill">Visitante</span><span class="tag-pill">Avecindada</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vie 25 Sep</strong></td>
+                        <td>Salud Sexual Sin Tabúes: Diagnóstico y tratamiento de ETS con 100% discreción</td>
+                        <td>Consulta Privada / ETS</td>
+                        <td><span class="tag-pill">Local</span><span class="tag-pill">Avecindada</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lun 28 Sep</strong></td>
+                        <td>¿Enfermo en tu hotel? Atendemos emergencias médicas directamente en tu habitación</td>
+                        <td>Consulta en Hoteles</td>
+                        <td><span class="tag-pill">Visitante</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mié 30 Sep</strong></td>
+                        <td>Recupera tu energía: Sueros vitaminados para deshidratación y desgaste en playa</td>
+                        <td>Sueros & Laboratorio</td>
+                        <td><span class="tag-pill">Visitante</span><span class="tag-pill">Avecindada</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vie 02 Oct</strong></td>
+                        <td>Cuidado integral de la mujer: Control prenatal, ginecología y colposcopia en Mazunte</td>
+                        <td>Ginecología & Embarazo</td>
+                        <td><span class="tag-pill">Local</span><span class="tag-pill">Avecindada</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lun 05 Oct</strong></td>
+                        <td>¿Viajas con seguro médico? Trabajamos con aseguradoras nacionales e internacionales</td>
+                        <td>Convenio Aseguradoras</td>
+                        <td><span class="tag-pill">Visitante</span><span class="tag-pill">Avecindada</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mié 07 Oct</strong></td>
+                        <td>Urgencias de medianoche en la playa: Médicos preparados disponibles las 24 horas</td>
+                        <td>Urgencias 24/7</td>
+                        <td><span class="tag-pill">Visitante</span><span class="tag-pill">Local</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vie 09 Oct</strong></td>
+                        <td>Control continuo de Diabetes e Hipertensión: Tu salud en manos de expertos</td>
+                        <td>Medicina Preventiva</td>
+                        <td><span class="tag-pill">Local</span><span class="tag-pill">Avecindada</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lun 12 Oct</strong></td>
+                        <td>Dermatología costera: Cuidado del sol, irritaciones de la piel y dermatología clínica</td>
+                        <td>Dermatología Clínica</td>
+                        <td><span class="tag-pill">Avecindada</span><span class="tag-pill">Visitante</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mié 14 Oct</strong></td>
+                        <td>Diagnóstico inmediato en Mazunte: Ultrasonido urgente y laboratorio local</td>
+                        <td>Ultrasonido & Laboratorios</td>
+                        <td><span class="tag-pill">Local</span><span class="tag-pill">Avecindada</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vie 16 Oct</strong></td>
+                        <td>Pregúntale al Dr. Marco Elizarrarás y Dra. Karen Anaya: Sesión de Q&A en historias</td>
+                        <td>Q&A / Conexión Abierta</td>
+                        <td><span class="tag-pill">Local</span><span class="tag-pill">Avecindada</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Investment Pricing Section -->
+        <h2 class="section-title">Opciones de Inversión Mensual</h2>
+        <div class="pricing-row">
+            <div class="price-card">
+                <h4>Paquete Intermedio</h4>
+                <p style="font-size: 13px; color: var(--text-muted);">Plan Contratado</p>
+                <div class="price-num">$7,500 <span style="font-size: 15px; font-weight: 400; color: var(--text-muted);">MXN/mes</span></div>
+                <ul>
+                    <li>✓ <strong>12 Publicaciones</strong> mensuales</li>
+                    <li>✓ Frecuencia: Lunes, Miércoles y Viernes</li>
+                    <li>✓ Diseño gráfico adaptable y profesional</li>
+                    <li>✓ Redacción de captions orientados a las 3 audiencias</li>
+                </ul>
+            </div>
+
+            <div class="price-card featured">
+                <span class="tag-pill" style="background: white; color: var(--dark-block); margin-bottom: 12px;">Recomendación Estratégica</span>
+                <h4>Paquete Óptimo</h4>
+                <p style="font-size: 13px; color: #9CA3AF;">Máximo alcance y constante presencia</p>
+                <div class="price-num">$9,000 <span style="font-size: 15px; font-weight: 400; color: #9CA3AF;">MXN/mes</span></div>
+                <ul>
+                    <li>✓ <strong>16 Publicaciones</strong> mensuales (+4 posts clave)</li>
+                    <li>✓ Frecuencia: 4 publicaciones semanales</li>
+                    <li>✓ <strong>+33% de contenido por solo +20% de costo</strong></li>
+                    <li>✓ Cobertura total de especialidades (Psicología, Bariatría, Cirugía)</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Dark Editorial Footer -->
+    <div class="footer-dark">
+        <div>
+            <div class="logo" style="margin-bottom: 4px;">✦ Agencia de Marketing Reinventa</div>
+            <p>Mazunte, Oax. • WhatsApp: 5631924145</p>
+        </div>
+        <div class="nav-pill" style="background: rgba(255,255,255,0.15);">Propuesta Digital 2026</div>
+    </div>
+
+</div>
+
+</body>
+</html>
